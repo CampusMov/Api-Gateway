@@ -12,7 +12,7 @@ public class ApiGatewayConfiguration {
         return builder.routes()
                 // Route to the authentication-management service
                 .route(r -> r.path("/auth/**")
-                        .uri("lb://iam-Service"))
+                        .uri("lb://iam-service"))
 
                 // Route to the routing matching service
                 .route(r -> r.path("/carpools/**", "/passenger-requests/**")
