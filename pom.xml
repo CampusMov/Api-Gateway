@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.campusmov.uniride</groupId>
-	<artifactId>Api-Gateway</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>api-gateway</artifactId>
+	<version>1.0.1</version>
 	<name>Api-Gateway</name>
 	<description>Api-Gateway</description>
 	<url/>
@@ -29,6 +29,7 @@
 	<properties>
 		<java.version>22</java.version>
 		<spring-cloud.version>2024.0.1</spring-cloud.version>
+		<dockerPassword>dockerPassword</dockerPassword>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -73,6 +74,18 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<name>jhosepmyr/${project.artifactId}:${project.version}</name>
+						<publish>true</publish>
+					</image>
+					<docker>
+						<publishRegistry>
+							<username>jhosepmyr</username>
+							<password>${dockerPassword}</password>
+						</publishRegistry>
+					</docker>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
