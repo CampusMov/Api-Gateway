@@ -21,6 +21,14 @@ public class ApiGatewayConfiguration {
                 // Route to the profile service
                 .route(r -> r.path("/profiles/**", "/work-orders/**")
                         .uri("lb://profile-service"))
+
+                // Route to the reputation incentives service
+                .route(r -> r.path("/reputation-incentives/**")
+                        .uri("lb://reputation-incentives-service"))
+
+                // Route to the analytics service
+                .route(r -> r.path("/analytics/**")
+                        .uri("lb://analytics-service"))
                 .build();
     }
 }
